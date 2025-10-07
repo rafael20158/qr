@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redirigiendo...</title>
+</head>
+<body>
+<script>
+(function(){
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  var android = /android/i.test(ua);
+  var ios = /iPhone|iPad|iPod/i.test(ua);
+  if(android) {
+    window.location.href = "''' + play_link + '''";
+  } else if(ios) {
+    window.location.href = "''' + appstore_link_placeholder + '''";
+  } else {
+    document.body.innerHTML = '<p>No se detectó un dispositivo móvil. Usa los enlaces: <a href="''' + play_link + '''">Google Play</a> | <a href="''' + appstore_link_placeholder + '''">App Store</a></p>';
+  }
+})();
+</script>
+</body>
+</html>
