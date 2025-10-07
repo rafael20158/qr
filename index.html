@@ -1,22 +1,64 @@
 <!doctype html>
-<html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Redirigiendo...</title>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirigiendo a Multicanal Catamayo EC...</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+      text-align: center;
+    }
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+    .android { background: #3ddc84; }
+    .ios { background: #0070c9; }
+    small { color: #777; font-size: 13px; display: block; margin-top: 10px; }
+  </style>
 </head>
 <body>
-<script>
-(function(){
-  var ua = navigator.userAgent || navigator.vendor || window.opera;
-  var android = /android/i.test(ua);
-  var ios = /iPhone|iPad|iPod/i.test(ua);
-  if(android) {
-    window.location.href = "''' + play_link + '''";
-  } else if(ios) {
-    window.location.href = "''' + appstore_link_placeholder + '''";
-  } else {
-    document.body.innerHTML = '<p>No se detectó un dispositivo móvil. Usa los enlaces: <a href="''' + play_link + '''">Google Play</a> | <a href="''' + appstore_link_placeholder + '''">App Store</a></p>';
-  }
-})();
-</script>
+  <div class="card">
+    <h2>Abriendo la aplicación...</h2>
+    <p id="msg">Detectando tu dispositivo y redirigiendo a la tienda correspondiente.</p>
+    <p>
+      <a class="button android" href="https://play.google.com/store/apps/details?id=com.webapp.app001">Abrir en Google Play</a>
+      <a class="button ios" href="https://apps.apple.com/ec/app/multicanal-catamayo-ec/id6752703465">Abrir en App Store</a>
+    </p>
+    <small>Si no eres redirigido automáticamente, usa los botones de arriba.</small>
+  </div>
+
+  <script>
+    (function() {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(ua)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.webapp.app001";
+      } else if (/iPhone|iPad|iPod/i.test(ua)) {
+        window.location.href = "https://apps.apple.com/ec/app/multicanal-catamayo-ec/id6752703465";
+      } else {
+        document.getElementById('msg').textContent =
+          "No se detectó un dispositivo móvil. Usa los botones para abrir la tienda.";
+      }
+    })();
+  </script>
 </body>
 </html>
